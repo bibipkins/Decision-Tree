@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 def get_unique_values(rows, col):
-    """Find the unique values for a column in a dataset."""
     return set([row[col] for row in rows])
 
 def get_class_counts(rows):
@@ -86,7 +85,6 @@ class Leaf:
     def __init__(self, rows):
         self.predictions = get_class_counts(rows)
 
-
 class Decision_Node:
     """A Decision Node asks a question.
     This holds a reference to the question, and to the two child nodes.
@@ -128,8 +126,6 @@ def build_tree(rows):
     return Decision_Node(question, true_branch, false_branch)
 
 def print_tree(node, spacing=""):
-    """World's most elegant tree printing function."""
-    # Base case: we've reached a leaf
     if isinstance(node, Leaf):
         print (spacing + "Predict", node.predictions)
         return
@@ -164,6 +160,13 @@ def print_leaf(counts):
     return probs
 
 header = ["Потреба", "Якість", "Ціна", "Кількість", "Клас"]
+
+def get_header():
+    return header
+
+def set_header(h):
+    header = h
+    print(header)
 
 class Question:
     """A Question is used to partition a dataset.
